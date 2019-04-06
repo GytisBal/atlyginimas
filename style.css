@@ -1,3 +1,19 @@
 .input-group-addon {
   width: 370px;
 }
+
+@media only screen and (max-width: 600px) {
+  .input-group {
+    display: block;
+  }
+  .browser-default {
+    width: 100%;
+  }
+  .input-group-addon {
+    width: 100%;
+    font-size: 13px;
+  }
+  .form-control {
+    width: 100% !important;
+  }
+}
