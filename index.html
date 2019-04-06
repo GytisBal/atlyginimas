@@ -1,67 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Hello, world!</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-dark">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-8 mx-auto">
           <div class="card card-body text-center mt-5">
-            <h1 class="heading display-5 pb-3">Loan Calculator</h1>
+            <h1 class="heading display-5 pb-3">Atlyginimo Skaičiuoklė</h1>
             <form id="loan-form">
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">$</span>
-                  <input type="number" class="form-control" id="amount" placeholder="Loan Amount">
+                  <span class="input-group-addon">Atlyginimo dydis, €</span>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="amount"
+                    placeholder=""
+                  />
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">%</span>
-                  <input type="number" class="form-control" id="interest" placeholder="Interest">
+                  <span class="input-group-addon">Atlyginimo tipas</span>
+                  <select class="browser-default custom-select">
+                    <option selected>Į rankas</option>
+                    <option value="1">Ant Popieriaus</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
-                <input type="number" class="form-control" id="years" placeholder="Years To Repay">
+                <div class="input-group">
+                  <span class="input-group-addon">Pensijos kaupimas</span>
+                  <select class="browser-default custom-select">
+                    <option selected>0%</option>
+                    <option value="1">1.8%</option>
+                    <option value="1">3%</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Mėnuo</span>
+                  <select class="browser-default custom-select">
+                    <option selected>Pasirinkite mėnesį</option>
+                    <option value="1">Sausis</option>
+                    <option value="2">Vasaris</option>
+                    <option value="3">Kovas</option>
+                    <option value="4">Balandis</option>
+                    <option value="5">Gegužė</option>
+                    <option value="6">Birželis</option>
+                    <option value="7">Liepa</option>
+                    <option value="8">Rugpjūtis</option>
+                    <option value="9">Rugsėjis</option>
+                    <option value="10">Spalis</option>
+                    <option value="11">Lapkritis</option>
+                    <option value="12">Gruodis</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    >Darbas švenčių ir poilsio dienomis</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="amount"
+                    placeholder="Įrašykite valandas"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    >Viršvalandžiai darbo dienomis</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="amount"
+                    placeholder="Įrašykite valandas"
+                  />
+                </div>
               </div>
               <div class="forn-group">
-                <input type="submit" value="Calculate" class="btn btn-dark btn-block">
+                <input
+                  type="submit"
+                  value="Skaičiuoti"
+                  class="btn btn-dark btn-block"
+                />
               </div>
             </form>
-            <!-- LOADER -->
-            <!--
-            <div id="loading">
-              <img src="img/loading.gif" alt="">
-            </div>
-            -->
             <!-- RESULTS -->
             <div id="results" class="pt-4">
-              <h5>Results</h5>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">Monthly Payment</span>
-                  <input type="number" class="form-control" id="monthly-payment" disabled>
+                  <span class="input-group-addon"
+                    >Etatinio atlyginimo valandos vertė 1h=€</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="monthly-payment"
+                    disabled
+                  />
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">Total Payment</span>
-                  <input type="number" class="form-control" id="total-payment" disabled>
+                  <span class="input-group-addon"
+                    >Valandos vertė švenčių ir poilsio dienomis</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="total-payment"
+                    disabled
+                  />
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon">Total Interest</span>
-                  <input type="number" class="form-control" id="total-interest" disabled>
+                  <span class="input-group-addon"
+                    >Bendra valandų vertė švenčių ir poilsio dienomis</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="total-interest"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    >Viršvalandžių vertė darbo dienomis</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="monthly-payment"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    >Bendra viršvalandžių vertė darbo dienomis</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="monthly-payment"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    >Atlyginimo dydis "į rankas"</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="monthly-payment"
+                    disabled
+                  />
                 </div>
               </div>
             </div>
@@ -72,9 +199,21 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+      integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+      integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"
+    ></script>
     <script src="app.js"></script>
   </body>
 </html>
