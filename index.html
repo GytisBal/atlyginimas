@@ -24,30 +24,37 @@
         <div class="col-md-8 mx-auto">
           <div class="card card-body text-center mt-5">
             <h1 class="heading display-5 pb-3">Atlyginimo Skaičiuoklė</h1>
+            <h6>
+              Skirta paskaičiuoti atlyginimą su viršvalandžiais turintiems 5
+              darbo dienų grafiką
+            </h6>
             <form id="loan-form">
               <div class="form-group">
                 <div class="input-group">
-                  <div class="input-group-addon">Atlyginimo dydis, €</div>
+                  <div class="input-group-addon">
+                    Atlyginimo dydis, € (Ant popieriaus)
+                  </div>
                   <input
                     type="number"
                     class="form-control"
                     id="atlyginimas"
                     placeholder=""
+                    step=".01"
                   />
                 </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">Atlyginimo tipas</span>
                   <select
-                    id="atlyginimoTipas"
+                    id="atlyginimo-tipas"
                     class="browser-default custom-select"
                   >
-                    <option selected>Į rankas</option>
-                    <option value="1">Ant Popieriaus</option>
+                    <option value="1">Į rankas</option>
+                    <option selected value="2">Ant popieriaus</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">Pensijos kaupimas</span>
@@ -55,13 +62,26 @@
                     id="pensijosKaupimas"
                     class="browser-default custom-select"
                   >
-                    <option selected>0%</option>
+                    <option selected value="0">0%</option>
                     <option value="1">1.8%</option>
-                    <option value="1">3%</option>
+                    <option value="2">3%</option>
                   </select>
                 </div>
               </div>
               <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    >Darbo dienų skaičius (19-23)</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="darbo-dienos"
+                    placeholder="Įrašykite dienas"
+                  />
+                </div>
+              </div>
+              <!-- <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">Mėnuo</span>
                   <select id="menuo" class="browser-default custom-select">
@@ -80,11 +100,11 @@
                     <option value="12">Gruodis</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"
-                    >Darbas švenčių ir poilsio dienomis</span
+                    >Viršvalandžiai švenčių ir poilsio dienomis</span
                   >
                   <input
                     type="number"
@@ -117,7 +137,7 @@
             </form>
             <!-- RESULTS -->
             <div id="results" class="pt-4">
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"
                     >Etatinio atlyginimo valandos vertė 1h=€</span
@@ -130,11 +150,23 @@
                   />
                 </div>
               </div>
-
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"
-                    >Valandos vertė švenčių ir poilsio dienomis</span
+                    >Viršvalandžių vertė darbo dienomis 1h=€</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="virsvalandziu-verte"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    >Valandos vertė švenčių ir poilsio dienomis 1h=€</span
                   >
                   <input
                     type="number"
@@ -158,19 +190,7 @@
                   />
                 </div>
               </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"
-                    >Viršvalandžių vertė darbo dienomis</span
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="monthly-payment"
-                    disabled
-                  />
-                </div>
-              </div>
+
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"
@@ -179,11 +199,11 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="monthly-payment"
+                    id="bendra-virsvalandziu-verte"
                     disabled
                   />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"
@@ -192,7 +212,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="monthly-payment"
+                    id="ismoketas-atlyginimas"
                     disabled
                   />
                 </div>
