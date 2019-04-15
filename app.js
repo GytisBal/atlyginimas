@@ -108,6 +108,7 @@ function calculateResults(e) {
   const galutinisAtlyginimas =
     atlyginimasPoMokesciu - bendrasAtlyginimas * pensija;
 
+  console.log(bendrasAtlyginimas);
   //Išmokamas altyginimas į rankas
 
   ismoketasAtlyginimas.value = galutinisAtlyginimas.toFixed(2);
