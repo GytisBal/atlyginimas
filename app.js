@@ -119,6 +119,8 @@ function calculateResults(e) {
     showError(
       "Darbo dienų skaičius negali buti didesnis nei 23, arba mažesnis nei 19"
     );
+    window.scrollTo(0, 0);
+
     ismoketasAtlyginimas.value = "";
   }
 
