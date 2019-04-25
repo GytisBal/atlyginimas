@@ -1,60 +1,36 @@
 // Listen for submit
 document
-  .getElementById("loan-form")
+  .getElementById("Salary-form")
   .addEventListener("submit", calculateResults);
-const pensijosKaupimas = document.getElementById("pensijosKaupimas");
-const atlyginimoTipas = document.getElementById("atlyginimo-tipas");
-
-// atlyginimoTipas.addEventListener("change", turnOff);
-
-// // Išjungti pensijos pasirinkimą
-// function turnOff() {
-//   if (atlyginimoTipas.options[atlyginimoTipas.selectedIndex].value == "1") {
-//     pensijosKaupimas.disabled = true;
-//     pensijosKaupimas.value = "0";
-//   } else if (
-//     atlyginimoTipas.options[atlyginimoTipas.selectedIndex].value == "2"
-//   ) {
-//     pensijosKaupimas.disabled = false;
-//   }
-// }
 
 // Calculate Results
 function calculateResults(e) {
-  console.log("Calculating...");
   // UI Vars
   const atlyginimas = document.getElementById("atlyginimas");
+  const pensijosKaupimas = document.getElementById("pensijosKaupimas");
+  const darboDienos = document.getElementById("darbo-dienos");
   const poilsioValandos = document.getElementById("poilsioValandos");
   const virsvalandziai = document.getElementById("virsvalandziai");
-  // const menuo = document.getElementById("menuo");
-  // const valandosVerte = document.getElementById("valandos-verte");
-  // const poilsioValandosVerte = document.getElementById(
-  //   "poilsio-valandos-verte"
-  // );
-  // const bendraPoilsioVerte = document.getElementById("bendra-poilsio-verte");
-  // const virsvalandziuVerte = document.getElementById("virsvalandziu-verte");
-  // const bendraVirsvalandziuVerte = document.getElementById(
-  //   "bendra-virsvalandziu-verte"
-  // );
   const ismoketasAtlyginimas = document.getElementById("ismoketas-atlyginimas");
-  const darboDienos = document.getElementById("darbo-dienos");
 
   //Paskaičiuoti valandas iš viso
 
-  let valandosIsViso =
+  const valandosIsViso =
     Number(darboDienos.value) * 8 +
     Number(poilsioValandos.value) +
     Number(virsvalandziai.value);
 
   //Paskaičiuoti kiekvieną vlandų rušį atskirai
 
-  let valandinis =
+  const valandinis =
     ((atlyginimas.value / (darboDienos.value * 8)) * valandosIsViso) /
     valandosIsViso;
 
-  let poilsioAtlyginimas = (poilsioValandos.value * valandinis * 2).toFixed(2);
+  const poilsioAtlyginimas = (poilsioValandos.value * valandinis * 2).toFixed(
+    2
+  );
 
-  let virsvalandziuAtlyginimas = (
+  const virsvalandziuAtlyginimas = (
     virsvalandziai.value *
     valandinis *
     1.5
@@ -62,7 +38,7 @@ function calculateResults(e) {
 
   //Paskaičiuoti bendrą atlyginimą
 
-  let bendrasAtlyginimas =
+  const bendrasAtlyginimas =
     Number(atlyginimas.value) +
     Number(poilsioAtlyginimas) +
     Number(virsvalandziuAtlyginimas);
@@ -105,13 +81,12 @@ function calculateResults(e) {
     pensija = 0.03;
   }
 
-  const galutinisAtlyginimas =
-    atlyginimasPoMokesciu - bendrasAtlyginimas * pensija;
-
-  console.log(bendrasAtlyginimas);
   //Išmokamas altyginimas į rankas
 
-  ismoketasAtlyginimas.value = galutinisAtlyginimas.toFixed(2);
+  ismoketasAtlyginimas.value = (
+    atlyginimasPoMokesciu -
+    bendrasAtlyginimas * pensija
+  ).toFixed(2);
 
   //Parodyti error jeigu jeigu skaičius yra didesnis arba mažesnis nei nustatytas intervalas
 
@@ -123,12 +98,6 @@ function calculateResults(e) {
 
     ismoketasAtlyginimas.value = "";
   }
-
-  // if (atlyginimoTipas.options[atlyginimoTipas.selectedIndex].value == "2") {
-
-  // } else {
-
-  // }
 
   e.preventDefault();
 }
