@@ -1,3 +1,20 @@
+// Init local storage
+const storage = new Storage();
+
+// Get stored location data
+const salaryValue = storage.getValue();
+
+// UI Vars
+const atlyginimas = document.getElementById("atlyginimas");
+const pensijosKaupimas = document.getElementById("pensijosKaupimas");
+const darboDienos = document.getElementById("darbo-dienos");
+const poilsioValandos = document.getElementById("poilsioValandos");
+const virsvalandziai = document.getElementById("virsvalandziai");
+const ismoketasAtlyginimas = document.getElementById("ismoketas-atlyginimas");
+
+//input value form LS
+atlyginimas.value = salaryValue.salary;
+
 // Listen for submit
 document
   .getElementById("Salary-form")
@@ -5,14 +22,6 @@ document
 
 // Calculate Results
 function calculateResults(e) {
-  // UI Vars
-  const atlyginimas = document.getElementById("atlyginimas");
-  const pensijosKaupimas = document.getElementById("pensijosKaupimas");
-  const darboDienos = document.getElementById("darbo-dienos");
-  const poilsioValandos = document.getElementById("poilsioValandos");
-  const virsvalandziai = document.getElementById("virsvalandziai");
-  const ismoketasAtlyginimas = document.getElementById("ismoketas-atlyginimas");
-
   //Paskaičiuoti valandas iš viso
 
   const valandosIsViso =
@@ -98,6 +107,9 @@ function calculateResults(e) {
 
     ismoketasAtlyginimas.value = "";
   }
+
+  // Set value in LS
+  storage.setValue(atlyginimas.value);
 
   e.preventDefault();
 }
